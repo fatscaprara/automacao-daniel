@@ -1,0 +1,17 @@
+{
+  "name": "automacao-daniel",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-xlsx": "^0.21.0",
+    "puppeteer": "^19.6.2"
+  }
+}
