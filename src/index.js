@@ -8,6 +8,8 @@ const planilhaFormatada = planilha.map(([nome, status, numero]) => {
   return { nome, status, numero };
 });
 
+console.log(planilhaFormatada);
+
 const opcoes = [
   {
     tipo: "Chegou lead",
@@ -16,7 +18,8 @@ const opcoes = [
   },
   {
     tipo: "Fez primeiro contato",
-    mensagem: "",
+    mensagem:
+      "Oi [NOME]! Tem alguma dúvida? Estou pra te ajudar a implementar a CERA no seu negócio essa semana",
   },
   {
     tipo: "+2d follow",
@@ -29,10 +32,13 @@ const opcoes = [
   },
 ];
 
-const opcao = 1;
+const opcao = 2;
 
 const planilhaFiltrada = planilhaFormatada
-  .filter(({ status }) => status === opcoes[opcao - 1].tipo)
+  .filter(({ status }) => {
+    console.log(status === opcoes[opcao - 1].tipo);
+    return status === opcoes[opcao - 1].tipo;
+  })
   .map(({ nome, numero }) => {
     return {
       nome: nome.split(" ")[0],
@@ -40,7 +46,7 @@ const planilhaFiltrada = planilhaFormatada
     };
   });
 
-console.log(planilhaFiltrada);
+console.log(planilhaFiltrada, planilhaFiltrada.length);
 
 function delay(time) {
   return new Promise(function (resolve) {
@@ -81,16 +87,7 @@ async function abrirNavegador() {
     await delay(5000);
   }
   console.log("Finalizado com sucesso");
+
+  browser.close();
 }
 abrirNavegador();
-
-// planilhaFormatada.forEach(async ({ nome, status, numero }) => {
-//   // console.log(opcoes[opcao - 1]);
-//   if (status === opcoes[opcao - 1]) {
-//     console.log(
-//       `Enviando mensagem para ${nome.split(" ")[0]} no número ${numero}`
-//     );
-//   }
-// });
-
-// console.log(planilhaFormatada);
